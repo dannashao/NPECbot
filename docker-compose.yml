@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  bot:
+    build: .
+    volumes:
+      - ./data:/app/data:rw
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - WHITELISTED_USERS=${WHITELISTED_USERS}
+      - TEMP_CODE=${TEMP_CODE}
+    user: "${UID:-1000}:${GID:-1000}"
+    restart: unless-stopped 
